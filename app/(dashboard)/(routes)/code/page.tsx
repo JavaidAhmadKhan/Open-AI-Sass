@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils';
 import UserAvatar from '@/components/UserAvatar';
 import BotAvatar from '@/components/BotAvatar';
 
-const CodePage = () => {
+const ImagePage = () => {
     const router = useRouter();
 
     const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
@@ -141,4 +141,4 @@ const CodePage = () => {
     )
 }
 
-export default CodePage
+export default ImagePage
