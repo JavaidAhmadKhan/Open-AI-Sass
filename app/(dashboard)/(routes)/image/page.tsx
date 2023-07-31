@@ -24,8 +24,10 @@ import { Empty } from "@/components/Empty";
 import Loader from "@/components/Loader";
 import { Card, CardFooter } from "@/components/ui/card";
 import Image from "next/image";
+import { useProModal } from "@/hooks/use-pro-model";
 
 const ImagePage = () => {
+    const proModal = useProModal()
     const router = useRouter();
     const [images, setImages] = useState<string[]>([]);
 
@@ -47,8 +49,9 @@ const ImagePage = () => {
             setImages(urls);
             form.reset();
         } catch (error: any) {
-            //todo: Open pro model
-            console.log(error);
+            if (error?.response?.status === 403) {
+                proModal.onOpen()
+            }
         } finally {
             router.refresh();
         }

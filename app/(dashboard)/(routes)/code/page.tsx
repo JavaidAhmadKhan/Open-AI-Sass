@@ -20,10 +20,12 @@ import Loader from '@/components/Loader';
 import { cn } from '@/lib/utils';
 import UserAvatar from '@/components/UserAvatar';
 import BotAvatar from '@/components/BotAvatar';
+import { useProModal } from '@/hooks/use-pro-model';
 
 const ImagePage = () => {
-    const router = useRouter();
 
+    const proModal = useProModal();
+    const router = useRouter();
     const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -50,7 +52,9 @@ const ImagePage = () => {
             form.reset()
 
         } catch (error: any) {
-            //todo: Open pro model
+            if (error?.response?.status === 403) {
+                proModal.onOpen()
+            }
             console.log(error)
         } finally {
             router.refresh()
