@@ -1,17 +1,15 @@
-import Footer from "@/components/Footer"
-import LandingContent from "@/components/LandingContent"
-import LandingHero from "@/components/LandingHero"
-import LandingNavbar from "@/components/LandingNavbar"
+import { LandingNavbar } from "@/components/landing-navbar";
+import { LandingHero } from "@/components/landing-hero";
+import { LandingContent } from "@/components/landing-content";
 
 const LandingPage = () => {
-    return (
-        <div className="h-full">
-            <LandingNavbar />
-            <LandingHero />
-            <LandingContent />
-            <Footer />
-        </div>
-    )
+  return ( 
+    <div className="h-full ">
+      <LandingNavbar />
+      <LandingHero />
+      <LandingContent />
+    </div>
+   );
 }
-
-export default LandingPage
+ 
+export default LandingPage;
